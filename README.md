@@ -1,2 +1,2 @@
-# proposal_generator
+# Proposal Generator
 ERPNext Proposal Generator
