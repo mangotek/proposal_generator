@@ -1,0 +1,39 @@
+<!-- proposal_generator/www/templates/proposal_template.html -->
+
+<div style="font-family: Arial; padding: 20px;">
+  <h2>{{ doc.title or "Proposal" }}</h2>
+  <p><strong>Customer:</strong> {{ doc.customer }}</p>
+  <p><strong>Valid From:</strong> {{ doc.valid_from }} | <strong>Valid To:</strong> {{ doc.valid_to }}</p>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Qty</th>
+        <th>Rate</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in doc.proposal_items %}
+      <tr>
+        <td>{{ item.item_code }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.qty }}</td>
+        <td>{{ item.rate }}</td>
+        <td>{{ item.amount }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p><strong>Total Amount:</strong> {{ doc.total_amount }}</p>
+  <p><strong>Terms & Conditions:</strong></p>
+  <div>{{ doc.terms_and_conditions }}</div>
+
+  {% if doc.signature_image %}
+  <p><strong>Client Signature:</strong></p>
+  <img src="{{ doc.signature_image }}" alt="Signature" style="max-width: 300px;" />
+  {% endif %}
+</div>
